@@ -65,7 +65,7 @@ The structural morphology array `sc[10][105]` includes an integer `choice_questi
 | 4 | Physics |
 | 5 | Chemistry |
 | 6 | Biology |
-| Other | Null |
+| Other | NULL |
 
 The integer `all_stu_num`stores the number of the students.
 
@@ -95,7 +95,7 @@ Next is our main part, realizing with a `while`loop. We ask for command and expl
 
 **Why we use a `getchar();`here?** Answer: When a number is entered as a command, a newline character (`"\n"`) is also entered into the buffer. If we don't call the getchar function, unexpected error will occur in the next time it read the buffer. Same to the others.
 
-Then a `switch(int);`structure was used to call each function and other works.
+Then a `switch(int)`structure was used to call each function and other works.
 
 The whole system end with return value 0 as usual.
 
@@ -149,5 +149,9 @@ Included in the main function. We add a confirm part to avoid exit the system un
 
 Copyright (C) 2020 Bill Haku
 
-Version: 1.0.1
+ReadMe File Version: 1.0.2
+
+Program Version: 1.0.1
+
+Update date: 20201219.
 

@@ -33,8 +33,9 @@ int classNumber;
 int allTestTime;
 int hourType;
 int currentHour, currentMin;
+FILE *fp;
 
-void first_use() {
+void IsFirstUse() {
     time_t now;
     struct tm *tm_now;
     time(&now);
@@ -54,7 +55,7 @@ void first_use() {
         hourType=5;
     
     printf("Welcome to the Student Achievement management System for Middle Schools.\n");
-    sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 59).
+    sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 60 and line 76).
     printf("This is a program developed by Bai Jiajun in Octember, 2020.\n");
     sleep(1);
     printf("First of all, please enter your name here and end with an Enter: ");
@@ -71,6 +72,11 @@ void first_use() {
     printf("Nice!\nAnd then enter the number of students in your class here: ");
     scanf("%d",&allStudentNumber);
     getchar();
+    
+    fp=fopen("isFirstUse.txt","w");
+    fprintf(fp, "%s %d %d %d", userName, userNameLength, classNumber, allStudentNumber);
+    fclose(fp);
+    
     printf("Nice! You have finished all the work you need to do before using this system\n");
     sleep(1);
     printf("Enjoy using it from now on!\n\n");
@@ -338,7 +344,19 @@ void print_out() {
 }
 
 int main(int argc, const char * argv[]) {
-    first_use();
+    int isFirstUse = 0;
+    if ((fp = fopen("isFirstUse.txt","r"))==NULL) {
+        if ((fp=fopen("isFirstUse.txt", "w"))==NULL) {
+            IsFirstUse();
+            isFirstUse=1;
+        }
+    }
+    
+    if(!isFirstUse) {
+        fscanf(fp,"%s %d %d %d", userName, &userNameLength, &classNumber, &allStudentNumber);
+    }
+    fclose(fp);
+    
     int task;
     char IsExit;
     switch (hourType) {

@@ -87,9 +87,9 @@ The integer `currentHour` and `currentMin` stores the hour of current time and m
 
 #### The main function, the start of the whole system.
 
-Firstly, we call the initialization function to do some initializing work. Details are explained in the *initialization (first use)* part.
+Firstly, we use a txt file to store and check if it is the user's first use. Integer `isFirstUse` is a flag integer symbolizing whether it is the first use or not. Details are explained in the *initialization (first use)* part. If it is not the first use, we load the basic data from the file.
 
-We get the current time in the initialization function(`first_use()`) and get the hourType according to the current time. 5 kinds were divided and the system will show different greetings when entering the system.
+We get the current time in the initialization function(`IsFirstUse()`) and get the hourType according to the current time. 5 kinds were divided and the system will show different greetings when entering the system.
 
 Next is our main part, realizing with a `while`loop. We ask for command and explain the operating method and the function of each command number. Then we scan a number as the task command.
 

@@ -12,8 +12,10 @@
 #include <stdlib.h>
 #include <unistd.h> // ##If you use Windows OS, change here into <windows.h>. ## (If you use macOS or Linux, you don't need to.)
 #include <time.h>
-
-const int MAXN=2e6;
+#include <stdbool.h>
+#define MAXN 100000
+#define INTMAX 2147481647
+#define INTMIN -2147481647
 
 struct student {
     struct score {
@@ -35,6 +37,13 @@ int allTestTime;
 int hourType;
 int currentHour, currentMin;
 FILE *fp;
+
+bool IsLegal(int n, int minn, int maxn) {
+    if(n<=maxn&&n>=minn)
+        return true;
+    else
+        return  false;
+}
 
 void IsFirstUse() {
     time_t now;
@@ -67,14 +76,35 @@ void IsFirstUse() {
         i++;
         userNameLength=i-1;
     }
+    
     printf("Are you the administrator? Enter 1 for yes or 0 for no. :");
     scanf("%d", &userType);
+    while(!IsLegal(userType, 0, 1)) {
+        printf("INPUT ILLEGAL! Try again!\n");
+        printf("Are you the administrator? Enter 1 for yes or 0 for no. :");
+        scanf("%d", &userType);
+        getchar();
+    }
     getchar();
+    
     printf("And then please enter your class number here and end with an Enter: ");
     scanf("%d",&classNumber);
+    while(!IsLegal(classNumber, 1, INTMAX)) {
+        printf("INPUT ILLEGAL! Try again!\n");
+        printf("And then please enter your class number here and end with an Enter: ");
+        scanf("%d",&classNumber);
+        getchar();
+    }
     getchar();
+    
     printf("Nice!\nAnd then enter the number of students in your class here: ");
     scanf("%d",&allStudentNumber);
+    while(!IsLegal(allStudentNumber, 1, INTMAX)) {
+        printf("INPUT ILLEGAL! Try again!\n");
+        printf("Now enter the number of students in your class here: ");
+        scanf("%d",&allStudentNumber);
+        getchar();
+    }
     getchar();
     
     fp=fopen("isFirstUse.txt","w");
@@ -96,74 +126,193 @@ void add_new_for_all() {
         printf("Student %d:\n",j);
         printf("Now enter the choice question score, the completion score, the answer question score of his/her Chinese in the order.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
+        
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[1][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[1][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Choice question score:  ");
+            scanf("%d",&stu[j].sc[1][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
+        
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[1][testTime].completion);
+        while(!IsLegal(stu[j].sc[1][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Completion score:  ");
+            scanf("%d",&stu[j].sc[1][testTime].completion);
+            getchar();
+        }
         getchar();
+        
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[1][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[1][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Answer question score:  ");
+            scanf("%d",&stu[j].sc[1][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
+        
         
         printf("\nNow the Math scores.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
+        
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[2][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Choice question score:  ");
+            scanf("%d",&stu[j].sc[2][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
+        
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[2][testTime].completion);
+        while(!IsLegal(stu[j].sc[2][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Completion score:  ");
+            scanf("%d",&stu[j].sc[2][testTime].completion);
+            getchar();
+        }
         getchar();
+        
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[2][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Answer question score:  ");
+            scanf("%d",&stu[j].sc[2][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
+        
         
         printf("\nNow the English scores.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
+        
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[3][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Choice question score:  ");
+            scanf("%d",&stu[j].sc[3][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
+        
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[3][testTime].completion);
+        while(!IsLegal(stu[j].sc[2][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+        	printf("Completion score:  ");
+        	scanf("%d",&stu[j].sc[3][testTime].completion);
+            getchar();
+        }
         getchar();
+        
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[3][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+        	printf("Answer question score:  ");
+        	scanf("%d",&stu[j].sc[3][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
         
         printf("\nNow the Physics scores.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[4][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+        	printf("Choice question score:  ");
+        	scanf("%d",&stu[j].sc[4][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[4][testTime].completion);
+        while(!IsLegal(stu[j].sc[2][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+        	printf("Completion score:  ");
+       		scanf("%d",&stu[j].sc[4][testTime].completion);
+            getchar();
+        }
         getchar();
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[4][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+       	 	printf("Answer question score:  ");
+        	scanf("%d",&stu[j].sc[4][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
         
         printf("\nNow the Chemistry scores.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[5][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Choice question score:  ");
+        	scanf("%d",&stu[j].sc[5][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[5][testTime].completion);
+    	while(!IsLegal(stu[j].sc[2][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Completion score:  ");
+        	scanf("%d",&stu[j].sc[5][testTime].completion);
+            getchar();
+        }
         getchar();
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[5][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Answer question score:  ");
+        	scanf("%d",&stu[j].sc[5][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
         
         printf("\nNow the Biology scores.\n");
         printf("Tips: the system will calculate the total score automatically.\n");
         printf("Choice question score:  ");
         scanf("%d",&stu[j].sc[6][testTime].choiceQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].choiceQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Choice question score:  ");
+        	scanf("%d",&stu[j].sc[6][testTime].choiceQuestion);
+            getchar();
+        }
         getchar();
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[6][testTime].completion);
+        while(!IsLegal(stu[j].sc[2][testTime].completion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Completion score:  ");
+        	scanf("%d",&stu[j].sc[6][testTime].completion);
+            getchar();
+        }
         getchar();
         printf("Answer question score:  ");
         scanf("%d",&stu[j].sc[6][testTime].answerQuestion);
+        while(!IsLegal(stu[j].sc[2][testTime].answerQuestion, 0, INTMAX)) {
+            printf("INPUT ILLEGAL! Try again!\n");
+            printf("Answer question score:  ");
+        	scanf("%d",&stu[j].sc[6][testTime].answerQuestion);
+            getchar();
+        }
         getchar();
         
         for(int i=1;i<=6;i++) {

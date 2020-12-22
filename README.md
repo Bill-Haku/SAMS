@@ -21,6 +21,7 @@ The following header files were included in this program:
 - `<stdlib.h>`
 - `<unisted.h> `
 - `<time.h>`
+- `<stdbool.h>`
 
 __Attention: `<unisted.h>` should be replaced into `<windows.h>` in Windows environment.__
 
@@ -29,8 +30,6 @@ __Attention: `<unisted.h>` should be replaced into `<windows.h>` in Windows envi
 The following are the the global variables:
 
 ```C
-const int MAXN=2e6;
- 
 struct student {
     struct score {
         int choiceQuestion;
@@ -143,6 +142,10 @@ First, we get the current time from the OS to provide greetings in the `main()`f
 
 Then we read the user's name, the class number and the total number of students.  Then all work are done.
 
+### IsLegal
+
+`IsLegal(int n, int minn, int maxn)` is a bool function to check if `n` is smaller than `minn` and `n` is bigger than `maxn`. If so, return `true`. If not, return `false`.
+
 ### Exit
 
 #### Used for exit the system.
@@ -153,9 +156,9 @@ Included in the main function. We add a confirm part to avoid exit the system un
 
 Copyright (C) 2020 Bill Haku
 
-ReadMe File Version: 1.0.3
+ReadMe File Version: 1.0.4
 
-Program Version: 1.0.2
+Program Version: 1.1.0
 
 Update date: 20201219.
 

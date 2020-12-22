@@ -33,29 +33,29 @@ const int MAXN=2e6;
  
 struct student {
     struct score {
-        int choice_question;
+        int choiceQuestion;
         int completion;
-        int answer_question;
+        int answerQuestion;
         int tot;
         char grade;
     } sc[10][105];   
-    int tot_score[105];  
+    int totalScore[105];  
     char name[20];
 }stu[MAXN];
-int all_stu_num;    
-char user_name[MAXN];
-int user_name_length=1;
-int class_number;
+int allStudentNumber;    
+char userName[MAXN];
+int userNameLength=1;
+int classNumber;
 int allTestTime;
-int hr_type;
+int hourType;
 int currentHour, currentMin;
 ```
 
 Here are the explainations.
 
-The structural morphology array `stu[MAXN]`includes another structural morphology array `sc[10][105]`, an integer array `tot_score` and a character array `name`. The specific introduction to `sc[10][105]` can be found in the next paragraph. The array `tot_score[105]` stores the total score of all subjects in each test. The parameter indicates the test number. 
+The structural morphology array `stu[MAXN]`includes another structural morphology array `sc[10][105]`, an integer array `totalScore` and a character array `name`. The specific introduction to `sc[10][105]` can be found in the next paragraph. The array `totalScore[105]` stores the total score of all subjects in each test. The parameter indicates the test number. 
 
-The structural morphology array `sc[10][105]` includes an integer `choice_question`, an integer `completion`, an integer `answer_question` , an integer `tot`, and an character `grade`. The 3 integers are used to store the score of each part in a test paper. `tot`is used to store the total score. `grade`is used to store the grade of the subject. The first parameter of `sc[10][105]`means each subject. Details can be found in the following form. The second parameter means the diffterent times of each subject.
+The structural morphology array `sc[10][105]` includes an integer `choiceQuestion`, an integer `completion`, an integer `answerQuestion` , an integer `tot`, and an character `grade`. The 3 integers are used to store the score of each part in a test paper. `tot`is used to store the total score. `grade`is used to store the grade of the subject. The first parameter of `sc[10][105]`means each subject. Details can be found in the following form. The second parameter means the diffterent times of each subject.
 
 | Parameter 1 | Meaning |
 | ------- | ----------- |
@@ -67,17 +67,17 @@ The structural morphology array `sc[10][105]` includes an integer `choice_questi
 | 6 | Biology |
 | Other | NULL |
 
-The integer `all_stu_num`stores the number of the students.
+The integer `allStudentNumber`stores the number of the students.
 
-The character array `user_name[MAXN]`stores the user's name.
+The character array `userName[MAXN]`stores the user's name.
 
-The integer `user_name_length`stores the length of the string `user_name[MAXN]`.
+The integer `userNameLength`stores the length of the string `userName[MAXN]`.
 
-The integer `class_number`stores the class number.
+The integer `classNumber`stores the class number.
 
 The integer `allTestTime`stores the total number of tests.
 
-The integer `hr_type`stores the type of hour of the current time.
+The integer `hourType`stores the type of hour of the current time.
 
 The integer `currentHour` and `currentMin` stores the hour of current time and minute of current time.
 
@@ -149,9 +149,9 @@ Included in the main function. We add a confirm part to avoid exit the system un
 
 Copyright (C) 2020 Bill Haku
 
-ReadMe File Version: 1.0.2
+ReadMe File Version: 1.0.3
 
-Program Version: 1.0.1
+Program Version: 1.0.2
 
 Update date: 20201219.
 

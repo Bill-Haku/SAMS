@@ -45,10 +45,12 @@ struct student {
 int allStudentNumber;    
 char userName[MAXN];
 int userNameLength=1;
+int userType;
 int classNumber;
 int allTestTime;
 int hourType;
 int currentHour, currentMin;
+FILE *fp;
 ```
 
 Here are the explainations.
@@ -73,6 +75,8 @@ The character array `userName[MAXN]`stores the user's name.
 
 The integer `userNameLength`stores the length of the string `userName[MAXN]`.
 
+The integer `userType` symbolizes if the user is administrator or not. `1`for yes and `0` for no.
+
 The integer `classNumber`stores the class number.
 
 The integer `allTestTime`stores the total number of tests.
@@ -95,7 +99,7 @@ Next is our main part, realizing with a `while`loop. We ask for command and expl
 
 **Why we use a `getchar();`here?** Answer: When a number is entered as a command, a newline character (`"\n"`) is also entered into the buffer. If we don't call the getchar function, unexpected error will occur in the next time it read the buffer. Same to the others.
 
-Then a `switch(int)`structure was used to call each function and other works.
+Then a `switch(int)`structure was used to call each function and other works. For function 1 and 2, an administrator identity is required.
 
 The whole system end with return value 0 as usual.
 

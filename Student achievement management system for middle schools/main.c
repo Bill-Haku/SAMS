@@ -29,6 +29,7 @@ struct student {
 int allStudentNumber;    //the number of students
 char userName[MAXN];
 int userNameLength=1;
+int userType;   //1 for yes and 0 for no
 int classNumber;
 int allTestTime;
 int hourType;
@@ -66,6 +67,9 @@ void IsFirstUse() {
         i++;
         userNameLength=i-1;
     }
+    printf("Are you the administrator? Enter 1 for yes or 0 for no. :");
+    scanf("%d", &userType);
+    getchar();
     printf("And then please enter your class number here and end with an Enter: ");
     scanf("%d",&classNumber);
     getchar();
@@ -74,7 +78,7 @@ void IsFirstUse() {
     getchar();
     
     fp=fopen("isFirstUse.txt","w");
-    fprintf(fp, "%s %d %d %d", userName, userNameLength, classNumber, allStudentNumber);
+    fprintf(fp, "%s %d %d %d %d", userName, userNameLength, userType, classNumber, allStudentNumber);
     fclose(fp);
     
     printf("Nice! You have finished all the work you need to do before using this system\n");
@@ -353,7 +357,7 @@ int main(int argc, const char * argv[]) {
     }
     
     if(!isFirstUse) {
-        fscanf(fp,"%s %d %d %d", userName, &userNameLength, &classNumber, &allStudentNumber);
+        fscanf(fp,"%s %d %d %d %d", userName, &userNameLength, &userType, &classNumber, &allStudentNumber);
     }
     fclose(fp);
     
@@ -378,8 +382,8 @@ int main(int argc, const char * argv[]) {
     }
     while(1) {
         printf("What do you want to do?\nEnter the code before the description!\n");
-        printf("1   Add a new record for all students.\n");
-        printf("2   Add a new record for a specific student.\n");
+        printf("1   Add a new record for all students. (Administrator only!)\n");
+        printf("2   Add a new record for a specific student. (Administrator only!)\n");
         printf("3   Look up the record of all students.\n");
         printf("4   Look up the record of one specific student.\n");
         printf("5   Export a txt form of the records.\n");
@@ -388,10 +392,22 @@ int main(int argc, const char * argv[]) {
         getchar();
         switch (task) {
             case 1:
-                add_new_for_all();
+                if(userType) {
+                    add_new_for_all();
+                }
+                else {
+                    printf("YOU HAVE NO RIGHTS!\n\n");
+                    continue;
+                }
                 break;
             case 2:
-                add_new_for_one();
+                if(userType) {
+                    add_new_for_one();
+                }
+                else {
+                    printf("YOU HAVE NO RIGHTS!\n\n");
+                    continue;
+                }
                 break;
             case 3:
                 look_up_all();

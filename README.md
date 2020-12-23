@@ -158,7 +158,7 @@ Copyright (C) 2020 Bill Haku
 
 ReadMe File Version: 1.0.4
 
-Program Version: 1.1.0
+Program Version: 1.1.2
 
-Update date: 20201219.
+Update date: 20201223.
 

@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h> // ##If you use Windows OS, change here into <windows.h>. ## (If you use macOS or Linux, you don't need to.)
+#include <unistd.h> // ##If you use Windows, change here into <windows.h>. ## (If you use macOS or Linux, you don't need to.)
 #include <time.h>
 #include <stdbool.h>
 #define MAXN 100000
@@ -570,9 +570,10 @@ int main(int argc, const char * argv[]) {
             case 6:
             ask:printf("Are you sure to exit? (Y/N)\n");
                 scanf("%c",&IsExit);
-                if(IsExit=='Y')
+                getchar();
+                if(IsExit=='Y'||IsExit=='y')
                     return 0;
-                else if(IsExit=='N')
+                else if(IsExit=='N'||IsExit=='n')
                     continue;
                 else {
                     printf("Your input is invalid, please enter again\n");

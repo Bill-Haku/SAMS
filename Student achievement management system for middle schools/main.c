@@ -5,7 +5,7 @@
 //  Created by HakuBill on 2020/10/22.
 //
 
-//Attention!! There are 2 places you need to pay attention to and change if you don not use macOS!!
+//Attention!! There are 3 places you need to pay attention to and change if you don not use macOS!!
 
 #include <stdio.h>
 #include <string.h>
@@ -66,7 +66,7 @@ void IsFirstUse() {
         hourType=5;
     
     printf("Welcome to the Student Achievement management System for Middle Schools.\n");
-    sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 60 and line 76).
+    sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 71 and line 116).
     printf("This is a program developed by Bai Jiajun in Octember, 2020.\n");
     sleep(1);
     printf("First of all, please enter your name here and end with an Enter: ");
@@ -122,6 +122,9 @@ void add_new_for_all() {
     int testTime;
     scanf("%d",&testTime);
     getchar();
+    if(allTestTime==0&&testTime!=1) {
+        printf("Testtime must start from 1!\nTest time has been set into 1!\n");
+    }
     while(!IsLegal(testTime, 1, allTestTime+1)) {
         printf("INPUT ILLEGAL! Try again!\n");
         printf("How many times is this test?    :");
@@ -357,6 +360,9 @@ void add_new_for_one() {
     int testTime;
     scanf("%d",&testTime);
     getchar();
+    if(allTestTime==0&&testTime!=1) {
+        printf("Testtime must start from 1!\nTest time has been set into 1!\n");
+    }
     while(!IsLegal(testTime, 1, allTestTime+1)) {
         printf("INPUT ILLEGAL! Try again!\n");
         printf("How many times is this test?    :");
@@ -655,6 +661,34 @@ void print_out() {
 
 }
 
+void FileSaveLoad(int type) {   //1 for save and 0 for load
+    FILE *fileOutput;
+    FILE *fileLoad;
+    switch (type) {
+        case 1:
+            fileOutput=fopen("~/SAMSsave.txt", "w");    //change the path into "C:\\Program Files\\SAMS\\SAMSsave.txt", same to the below in line 674
+            
+            fprintf(fileOutput, "%d %d ", allTestTime, classNumber);
+            for(int i=1;i<=allTestTime;i++) {
+                for(int j=1;j<=allStudentNumber;j++) {
+                    fprintf(fileOutput, "%d %d %d %d %d %d %d ", stu[j].totalScore[i],stu[j].sc[1][i].tot,stu[j].sc[2][i].tot,stu[j].sc[3][i].tot,stu[j].sc[4][i].tot,stu[j].sc[5][i].tot,stu[j].sc[6][i].tot);
+                }
+            }
+            fclose(fileOutput);
+            break;
+        case 2:
+            fileLoad=fopen("~/SAMSsave.txt","r");
+            fscanf(fileLoad, "%d%d", &allTestTime, &classNumber);
+            for(int i=1;i<=allTestTime;i++) {
+                for(int j=1;j<=allStudentNumber;j++) {
+                    fscanf(fileLoad, "%d%d%d%d%d%d%d",&stu[j].totalScore[i],&stu[j].sc[1][i].tot,&stu[j].sc[2][i].tot,&stu[j].sc[3][i].tot,&stu[j].sc[4][i].tot,&stu[j].sc[5][i].tot,&stu[j].sc[6][i].tot);
+                }
+            }
+            fclose(fileLoad);
+            break;
+    }
+}
+
 int main(int argc, const char * argv[]) {
     int isFirstUse = 0;
     if ((fp = fopen("isFirstUse.txt","w"))==NULL) {
@@ -666,6 +700,7 @@ int main(int argc, const char * argv[]) {
     
     if(!isFirstUse) {
         fscanf(fp,"%s %d %d %d %d", userName, &userNameLength, &userType, &classNumber, &allStudentNumber);
+        FileSaveLoad(0);
     }
     fclose(fp);
     
@@ -730,8 +765,10 @@ int main(int argc, const char * argv[]) {
             ask:printf("Are you sure to exit? (Y/N)\n");
                 scanf("%c",&IsExit);
                 getchar();
-                if(IsExit=='Y'||IsExit=='y')
+                if(IsExit=='Y'||IsExit=='y') {
+                    FileSaveLoad(1);
                     return 0;
+                }
                 else if(IsExit=='N'||IsExit=='n')
                     continue;
                 else {

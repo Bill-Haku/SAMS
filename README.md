@@ -132,8 +132,6 @@ We ask the user to enter the student number and the test time who wants to look 
 
 We use a `for`loop to print out the scores of each test. We print out the header of the form and use another `for`loop to print out the score of each subject of each students.
 
-Then we redirect to the console to make sure the output messages will be displayed on the screen instead of the output file. __Attention: the code is different in different compile environments.__
-
 ## Other Moudles
 
 ### Initialization (first use)
@@ -146,6 +144,10 @@ Then we read the user's name, the class number and the total number of students.
 
 `IsLegal(int n, int minn, int maxn)` is a bool function to check if `n` is smaller than `minn` and `n` is bigger than `maxn`. If so, return `true`. If not, return `false`.
 
+### FileSaveLoad
+
+`FileSaveLoad(int type)` is a function to save all the data into a txt file when `type`is `0` and load all the data from the txt file when `type` is `1`.
+
 ### Exit
 
 #### Used for exit the system.
@@ -156,9 +158,9 @@ Included in the main function. We add a confirm part to avoid exit the system un
 
 Copyright (C) 2020 Bill Haku
 
-ReadMe File Version: 1.0.4
+ReadMe File Version: 1.0.5
 
-Program Version: 1.1.2
+Program Version: 1.3.0
 
-Update date: 20201223.
+Update date: 20201224.
 

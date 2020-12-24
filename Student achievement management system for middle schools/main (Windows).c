@@ -66,9 +66,9 @@ void IsFirstUse() {
         hourType=5;
     
     printf("Welcome to the Student Achievement management System for Middle Schools.\n");
-    sleep(1000);   //Change the integer into 1 if there is no obvious pause in the macOS or Linux. Same to the blew (in line 71 and line 116).
+    Sleep(1000);   //Change the integer into 1 if there is no obvious pause in the macOS or Linux. Same to the blew (in line 71 and line 116).
     printf("This is a program developed by Bai Jiajun in Octember, 2020.\n");
-    sleep(1000);
+    Sleep(1000);
     printf("First of all, please enter your name here and end with an Enter: ");
     int i=1;
     while(scanf("%c",&userName[i])) {
@@ -113,7 +113,7 @@ void IsFirstUse() {
     fclose(fp);
     
     printf("Nice! You have finished all the work you need to do before using this system\n");
-    sleep(1000);
+    Sleep(1000);
     printf("Enjoy using it from now on!\n\n");
 }
 
@@ -690,14 +690,15 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
 
 int main(int argc, const char * argv[]) {
     int isFirstUse = 0;
-    if ((fp = fopen("isFirstUse.txt","w"))==NULL) {
-        if ((fp=fopen("isFirstUse.txt", "r"))==NULL) {
+    if ((fp = fopen("C:\\isFirstUse.txt","r"))==NULL) {
+        if ((fp=fopen("C:\\isFirstUse.txt", "w"))==NULL) {
             IsFirstUse();
             isFirstUse=1;
         }
     }
     
     if(!isFirstUse) {
+        fp=fopen("C:\\isFirstUse.txt","r");
         fscanf(fp,"%s %d %d %d %d", userName, &userNameLength, &userType, &classNumber, &allStudentNumber);
         FileSaveLoad(0);
     }

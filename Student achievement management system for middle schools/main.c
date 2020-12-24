@@ -691,8 +691,8 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
 
 int main(int argc, const char * argv[]) {
     int isFirstUse = 0;
-    if ((fp = fopen("isFirstUse.txt","w"))==NULL) {
-        if ((fp=fopen("isFirstUse.txt", "r"))==NULL) {
+    if ((fp = fopen("~/isFirstUse.txt","w"))==NULL) {
+        if ((fp=fopen("~/isFirstUse.txt", "r"))==NULL) {
             IsFirstUse();
             isFirstUse=1;
         }

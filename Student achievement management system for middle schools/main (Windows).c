@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h> // ##If you use Windows, change here into <windows.h>. ## (If you use macOS or Linux, you don't need to.)
+#include <windows.h> // ##If you use macOS or Linux, change here into <unistd.h>. ## (If you use Windows, you don't need to.)
 #include <time.h>
 #include <stdbool.h>
 #define MAXN 100000
@@ -66,9 +66,9 @@ void IsFirstUse() {
         hourType=5;
     
     printf("Welcome to the Student Achievement management System for Middle Schools.\n");
-    sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 71 and line 116).
+    sleep(1000);   //Change the integer into 1 if there is no obvious pause in the macOS or Linux. Same to the blew (in line 71 and line 116).
     printf("This is a program developed by Bai Jiajun in Octember, 2020.\n");
-    sleep(1);
+    sleep(1000);
     printf("First of all, please enter your name here and end with an Enter: ");
     int i=1;
     while(scanf("%c",&userName[i])) {
@@ -113,7 +113,7 @@ void IsFirstUse() {
     fclose(fp);
     
     printf("Nice! You have finished all the work you need to do before using this system\n");
-    sleep(1);
+    sleep(1000);
     printf("Enjoy using it from now on!\n\n");
 }
 
@@ -220,8 +220,8 @@ void add_new_for_all() {
         getchar();
         while(!IsLegal(stu[j].sc[3][testTime].completion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
-        	printf("Completion score:  ");
-        	scanf("%d",&stu[j].sc[3][testTime].completion);
+            printf("Completion score:  ");
+            scanf("%d",&stu[j].sc[3][testTime].completion);
             getchar();
         }
         
@@ -230,8 +230,8 @@ void add_new_for_all() {
         getchar();
         while(!IsLegal(stu[j].sc[3][testTime].answerQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
-        	printf("Answer question score:  ");
-        	scanf("%d",&stu[j].sc[3][testTime].answerQuestion);
+            printf("Answer question score:  ");
+            scanf("%d",&stu[j].sc[3][testTime].answerQuestion);
             getchar();
         }
         
@@ -243,8 +243,8 @@ void add_new_for_all() {
         getchar();
         while(!IsLegal(stu[j].sc[4][testTime].choiceQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
-        	printf("Choice question score:  ");
-        	scanf("%d",&stu[j].sc[4][testTime].choiceQuestion);
+            printf("Choice question score:  ");
+            scanf("%d",&stu[j].sc[4][testTime].choiceQuestion);
             getchar();
         }
         
@@ -253,8 +253,8 @@ void add_new_for_all() {
         getchar();
         while(!IsLegal(stu[j].sc[4][testTime].completion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
-        	printf("Completion score:  ");
-       		scanf("%d",&stu[j].sc[4][testTime].completion);
+            printf("Completion score:  ");
+               scanf("%d",&stu[j].sc[4][testTime].completion);
             getchar();
         }
         
@@ -263,8 +263,8 @@ void add_new_for_all() {
         getchar();
         while(!IsLegal(stu[j].sc[4][testTime].answerQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
-       	 	printf("Answer question score:  ");
-        	scanf("%d",&stu[j].sc[4][testTime].answerQuestion);
+                printf("Answer question score:  ");
+            scanf("%d",&stu[j].sc[4][testTime].answerQuestion);
             getchar();
         }
         
@@ -277,17 +277,17 @@ void add_new_for_all() {
         while(!IsLegal(stu[j].sc[5][testTime].choiceQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Choice question score:  ");
-        	scanf("%d",&stu[j].sc[5][testTime].choiceQuestion);
+            scanf("%d",&stu[j].sc[5][testTime].choiceQuestion);
             getchar();
         }
         
         printf("Completion score:  ");
         scanf("%d",&stu[j].sc[5][testTime].completion);
         getchar();
-    	while(!IsLegal(stu[j].sc[5][testTime].completion, 0, SCOREMAX)) {
+        while(!IsLegal(stu[j].sc[5][testTime].completion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Completion score:  ");
-        	scanf("%d",&stu[j].sc[5][testTime].completion);
+            scanf("%d",&stu[j].sc[5][testTime].completion);
             getchar();
         }
         
@@ -297,7 +297,7 @@ void add_new_for_all() {
         while(!IsLegal(stu[j].sc[5][testTime].answerQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Answer question score:  ");
-        	scanf("%d",&stu[j].sc[5][testTime].answerQuestion);
+            scanf("%d",&stu[j].sc[5][testTime].answerQuestion);
             getchar();
         }
         
@@ -310,7 +310,7 @@ void add_new_for_all() {
         while(!IsLegal(stu[j].sc[6][testTime].choiceQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Choice question score:  ");
-        	scanf("%d",&stu[j].sc[6][testTime].choiceQuestion);
+            scanf("%d",&stu[j].sc[6][testTime].choiceQuestion);
             getchar();
         }
         
@@ -320,7 +320,7 @@ void add_new_for_all() {
         while(!IsLegal(stu[j].sc[6][testTime].completion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Completion score:  ");
-        	scanf("%d",&stu[j].sc[6][testTime].completion);
+            scanf("%d",&stu[j].sc[6][testTime].completion);
             getchar();
         }
         
@@ -330,7 +330,7 @@ void add_new_for_all() {
         while(!IsLegal(stu[j].sc[6][testTime].answerQuestion, 0, SCOREMAX)) {
             printf("INPUT ILLEGAL! Try again!\n");
             printf("Answer question score:  ");
-        	scanf("%d",&stu[j].sc[6][testTime].answerQuestion);
+            scanf("%d",&stu[j].sc[6][testTime].answerQuestion);
             getchar();
         }
         
@@ -666,8 +666,7 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
     FILE *fileLoad;
     switch (type) {
         case 1:
-            fileOutput=fopen("~/SAMSsave.txt", "w");    //change the path into "C:\\Program Files\\SAMS\\SAMSsave.txt", same to the below in line 680
-            
+            fileOutput=fopen("C:\\Program Files\\SAMS\\SAMSsave.txt", "w");    //change the path into "~/SAMSsave.txt", same to the below in line 679
             fprintf(fileOutput, "%d %d ", allTestTime, classNumber);
             for(int i=1;i<=allTestTime;i++) {
                 for(int j=1;j<=allStudentNumber;j++) {
@@ -677,7 +676,7 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
             fclose(fileOutput);
             break;
         case 2:
-            fileLoad=fopen("~/SAMSsave.txt","r");
+            fileLoad=fopen("C:\\Program Files\\SAMS\\SAMSsave.txt","r");
             fscanf(fileLoad, "%d%d", &allTestTime, &classNumber);
             for(int i=1;i<=allTestTime;i++) {
                 for(int j=1;j<=allStudentNumber;j++) {

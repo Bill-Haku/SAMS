@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF7418282594B1480059AFC7 /* main (Windows).c in Sources */ = {isa = PBXBuildFile; fileRef = BF7418272594B1480059AFC7 /* main (Windows).c */; };
 		BF935CE82541832800D6B7B6 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BF935CE72541832800D6B7B6 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BF7418272594B1480059AFC7 /* main (Windows).c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "main (Windows).c"; sourceTree = "<group>"; };
 		BF935CE42541832800D6B7B6 /* Student achievement management system for middle schools */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Student achievement management system for middle schools"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF935CE72541832800D6B7B6 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				BF935CE72541832800D6B7B6 /* main.c */,
-				BF7418272594B1480059AFC7 /* main (Windows).c */,
 			);
 			path = "Student achievement management system for middle schools";
 			sourceTree = "<group>";
@@ -121,7 +118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF7418282594B1480059AFC7 /* main (Windows).c in Sources */,
 				BF935CE82541832800D6B7B6 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

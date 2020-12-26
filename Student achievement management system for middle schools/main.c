@@ -25,7 +25,7 @@ struct student {
         int answerQuestion;
         int tot;
         char grade;
-    } sc[10][105];   //parameter1: 1 to 6 is for chinese, math, english, physics, chemstry and biology. parameter2: the times of one subject
+    } sc[10][105];   //parameter1: 1 to 6 is for chinese, math, english, physics, chemstry and biology. parameter2: the test times of one subject
     int totalScore[105];  //total score
     char name[20];
 }stu[MAXN];
@@ -47,23 +47,6 @@ bool IsLegal(int n, int minn, int maxn) {
 }
 
 void IsFirstUse() {
-    time_t now;
-    struct tm *tm_now;
-    time(&now);
-    tm_now = localtime(&now);
-    int hour = tm_now->tm_hour;
-    currentHour=hour;
-    currentMin=tm_now->tm_min;
-    if(hour>=0&&hour<=6)
-        hourType=1;
-    else if(hour>=7&&hour<=11)
-        hourType=2;
-    else if(hour>=12&&hour<=13)
-        hourType=3;
-    else if(hour>=14&&hour<=18)
-        hourType=4;
-    else if(hour>=19&&hour<=23)
-        hourType=5;
     
     printf("Welcome to the Student Achievement management System for Middle Schools.\n");
     sleep(1);   //Change the integer into 1000 if there is no obvious pause in the windows. Same to the blew (in line 71 and line 116).
@@ -71,12 +54,14 @@ void IsFirstUse() {
     sleep(1);
     printf("First of all, please enter your name here and end with an Enter: ");
     int i=1;
-    while(scanf("%c",&userName[i])) {
-        if(userName[i]=='\n')
-            break;
-        i++;
-        userNameLength=i-1;
-    }
+//    while(scanf("%c",&userName[i])) {
+//        if(userName[i]=='\n')
+//            break;
+//        i++;
+//        userNameLength=i-1;
+//    }
+    scanf("%s",userName);
+    getchar();
     
     printf("Are you the administrator? Enter 1 for yes or 0 for no. :");
     scanf("%d", &userType);
@@ -108,7 +93,7 @@ void IsFirstUse() {
     }
     getchar();
     
-    fp=fopen("isFirstUse.txt","w");
+    fp=fopen("/users/hakubill/isFirstUse.txt","w");
     fprintf(fp, "%s %d %d %d %d", userName, userNameLength, userType, classNumber, allStudentNumber);
     fclose(fp);
     
@@ -665,8 +650,8 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
     FILE *fileOutput;
     FILE *fileLoad;
     switch (type) {
-        case 1:
-            fileOutput=fopen("~/SAMSsave.txt", "w");    //change the path into "C:\\Program Files\\SAMS\\SAMSsave.txt", same to the below in line 680
+        case 1: //save
+            fileOutput=fopen("/users/hakubill/SAMSsave.txt", "wb");    //change the path into "C:\\Program Files\\SAMS\\SAMSsave.txt", same to the below in line 680
             
             fprintf(fileOutput, "%d %d ", allTestTime, classNumber);
             for(int i=1;i<=allTestTime;i++) {
@@ -676,12 +661,12 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
             }
             fclose(fileOutput);
             break;
-        case 2:
-            fileLoad=fopen("~/SAMSsave.txt","r");
-            fscanf(fileLoad, "%d%d", &allTestTime, &classNumber);
+        case 0: //load
+            fileLoad=fopen("/users/hakubill/SAMSsave.txt","r");
+            fscanf(fileLoad, "%d %d ", &allTestTime, &classNumber);
             for(int i=1;i<=allTestTime;i++) {
                 for(int j=1;j<=allStudentNumber;j++) {
-                    fscanf(fileLoad, "%d%d%d%d%d%d%d",&stu[j].totalScore[i],&stu[j].sc[1][i].tot,&stu[j].sc[2][i].tot,&stu[j].sc[3][i].tot,&stu[j].sc[4][i].tot,&stu[j].sc[5][i].tot,&stu[j].sc[6][i].tot);
+                    fscanf(fileLoad, "%d %d %d %d %d %d %d ",&stu[j].totalScore[i],&stu[j].sc[1][i].tot,&stu[j].sc[2][i].tot,&stu[j].sc[3][i].tot,&stu[j].sc[4][i].tot,&stu[j].sc[5][i].tot,&stu[j].sc[6][i].tot);
                 }
             }
             fclose(fileLoad);
@@ -691,11 +676,9 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
 
 int main(int argc, const char * argv[]) {
     int isFirstUse = 0;
-    if ((fp = fopen("~/isFirstUse.txt","w"))==NULL) {
-        if ((fp=fopen("~/isFirstUse.txt", "r"))==NULL) {
-            IsFirstUse();
-            isFirstUse=1;
-        }
+    if ((fp = fopen("/users/hakubill/isFirstUse.txt","r"))==NULL) {
+        IsFirstUse();
+        isFirstUse=1;
     }
     
     if(!isFirstUse) {
@@ -703,6 +686,24 @@ int main(int argc, const char * argv[]) {
         FileSaveLoad(0);
     }
     fclose(fp);
+    
+    time_t now;
+    struct tm *tm_now;
+    time(&now);
+    tm_now = localtime(&now);
+    int hour = tm_now->tm_hour;
+    currentHour=hour;
+    currentMin=tm_now->tm_min;
+    if(hour>=0&&hour<=6)
+        hourType=1;
+    else if(hour>=7&&hour<=11)
+        hourType=2;
+    else if(hour>=12&&hour<=13)
+        hourType=3;
+    else if(hour>=14&&hour<=18)
+        hourType=4;
+    else if(hour>=19&&hour<=23)
+        hourType=5;
     
     int task;
     char IsExit;

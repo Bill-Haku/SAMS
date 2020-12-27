@@ -53,13 +53,6 @@ void IsFirstUse() {
     printf("This is a program developed by Bai Jiajun in Octember, 2020.\n");
     sleep(1);
     printf("First of all, please enter your name here and end with an Enter: ");
-    int i=1;
-//    while(scanf("%c",&userName[i])) {
-//        if(userName[i]=='\n')
-//            break;
-//        i++;
-//        userNameLength=i-1;
-//    }
     scanf("%s",userName);
     getchar();
     
@@ -657,6 +650,10 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
             for(int i=1;i<=allTestTime;i++) {
                 for(int j=1;j<=allStudentNumber;j++) {
                     fprintf(fileOutput, "%d %d %d %d %d %d %d ", stu[j].totalScore[i],stu[j].sc[1][i].tot,stu[j].sc[2][i].tot,stu[j].sc[3][i].tot,stu[j].sc[4][i].tot,stu[j].sc[5][i].tot,stu[j].sc[6][i].tot);
+                    fprintf(fileOutput, "%d %d %d %d %d %d ", stu[j].sc[1][i].choiceQuestion,stu[j].sc[2][i].choiceQuestion,stu[j].sc[3][i].choiceQuestion,stu[j].sc[4][i].choiceQuestion,stu[j].sc[5][i].choiceQuestion,stu[j].sc[6][i].choiceQuestion);
+                    fprintf(fileOutput, "%d %d %d %d %d %d ", stu[j].sc[1][i].completion,stu[j].sc[2][i].completion,stu[j].sc[3][i].completion,stu[j].sc[4][i].completion,stu[j].sc[5][i].completion,stu[j].sc[6][i].completion);
+                    fprintf(fileOutput, "%d %d %d %d %d %d ", stu[j].sc[1][i].answerQuestion,stu[j].sc[2][i].answerQuestion,stu[j].sc[3][i].answerQuestion,stu[j].sc[4][i].answerQuestion,stu[j].sc[5][i].answerQuestion,stu[j].sc[6][i].answerQuestion);
+                    fprintf(fileOutput, "%c %c %c %c %c %c ", stu[j].sc[1][i].grade,stu[j].sc[2][i].grade,stu[j].sc[3][i].grade,stu[j].sc[4][i].grade,stu[j].sc[5][i].grade,stu[j].sc[6][i].grade);
                 }
             }
             fclose(fileOutput);
@@ -667,6 +664,10 @@ void FileSaveLoad(int type) {   //1 for save and 0 for load
             for(int i=1;i<=allTestTime;i++) {
                 for(int j=1;j<=allStudentNumber;j++) {
                     fscanf(fileLoad, "%d %d %d %d %d %d %d ",&stu[j].totalScore[i],&stu[j].sc[1][i].tot,&stu[j].sc[2][i].tot,&stu[j].sc[3][i].tot,&stu[j].sc[4][i].tot,&stu[j].sc[5][i].tot,&stu[j].sc[6][i].tot);
+                    fscanf(fileLoad, "%d %d %d %d %d %d ", &stu[j].sc[1][i].choiceQuestion,&stu[j].sc[2][i].choiceQuestion,&stu[j].sc[3][i].choiceQuestion,&stu[j].sc[4][i].choiceQuestion,&stu[j].sc[5][i].choiceQuestion,&stu[j].sc[6][i].choiceQuestion);
+                    fscanf(fileLoad, "%d %d %d %d %d %d ", &stu[j].sc[1][i].completion,&stu[j].sc[2][i].completion,&stu[j].sc[3][i].completion,&stu[j].sc[4][i].completion,&stu[j].sc[5][i].completion,&stu[j].sc[6][i].completion);
+                    fscanf(fileLoad, "%d %d %d %d %d %d ", &stu[j].sc[1][i].answerQuestion,&stu[j].sc[2][i].answerQuestion,&stu[j].sc[3][i].answerQuestion,&stu[j].sc[4][i].answerQuestion,&stu[j].sc[5][i].answerQuestion,&stu[j].sc[6][i].answerQuestion);
+                    fscanf(fileLoad, "%c %c %c %c %c %c ", &stu[j].sc[1][i].grade,&stu[j].sc[2][i].grade,&stu[j].sc[3][i].grade,&stu[j].sc[4][i].grade,&stu[j].sc[5][i].grade,&stu[j].sc[6][i].grade);
                 }
             }
             fclose(fileLoad);
@@ -724,6 +725,7 @@ int main(int argc, const char * argv[]) {
             printf("Good evening, %s! It's PM %d : %d now.\n", userName, currentHour, currentMin);
             break;
     }
+    
     while(1) {
         printf("What do you want to do?\nEnter the code before the description!\n");
         printf("1   Add a new record for all students. (Administrator only!)\n");
